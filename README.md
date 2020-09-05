@@ -5,5 +5,6 @@ Criar arquivo `.env` com as seguintes informações:
 ```
 PORT=3000
 HOST=localhost
-CREDENTIAL=(De acordo com sua credencial na grid)
+CREDENTIAL_PROSCORE=(De acordo com sua credencial na grid)
+CREDENTIAL_VEHICLES=(De acordo com sua credencial na grid)
 ```

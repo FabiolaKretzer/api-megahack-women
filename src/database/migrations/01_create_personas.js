@@ -4,6 +4,7 @@ exports.up = function (knex) {
         table.string('name').notNullable()
         table.string('cpf').notNullable()
         table.string('data_nsc').notNullable()
+        table.enu('type', ['PARENT', 'MARRIED', 'BOSS'])
     })
 }
 

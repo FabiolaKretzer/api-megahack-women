@@ -1,13 +1,13 @@
-const db = require('../database/connections')
+const { getUsers } = require('../handlers/users');
 
 module.exports = {
     async show(request, response) {
         const { token } = request.query
 
-        const user = await db('users').where('token', token).first()
+        const user = await getUsers(token)
 
         if (!user) {
-            return response.status(400).json({ message: 'Point not found.' });
+            return response.status(400).json({ message: 'User not found.' });
         }
 
         response.status(200).json({ name: user.name })

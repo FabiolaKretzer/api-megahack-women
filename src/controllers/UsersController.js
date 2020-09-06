@@ -2,7 +2,7 @@ const { getUsers } = require('../handlers/users');
 
 module.exports = {
     async show(request, response) {
-        const { token } = request.query
+        const { token } = request.headers
 
         const user = await getUsers(token)
 

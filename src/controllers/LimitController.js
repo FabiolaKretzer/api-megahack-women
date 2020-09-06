@@ -7,8 +7,8 @@ const { averageVehicles } = require('../utils/average_vehicles')
 
 module.exports = {
     async show(request, response) {
-        const { token, latitude, longitude } = request.query
-        const { phone } = request.body
+        const { token } = request.headers
+        const { phone, latitude, longitude } = request.body
 
         const user = await getUsers(token)
 

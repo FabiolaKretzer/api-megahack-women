@@ -97,15 +97,9 @@ GET http://localhost:3000/limit
 
 ```
 headers: {
-    "token": "string"
-},
-body: {
-    "latitude": "number",
-    "longitude": "number",
-	"phone": {
-		"name_os": "string",
-		"mark": "string",
-		"model": "string"
-	}
+    "token": "string",
+	"phone": "string", // model phone
+	latitude: "string", 
+	longitude: "string"
 }
 ```

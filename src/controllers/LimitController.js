@@ -6,35 +6,34 @@ const { getScore, getAverageIncome } = require('../services/clients')
 const { averageVehicles } = require('../utils/average_vehicles')
 
 module.exports = {
-  async show(request, response) {
-    const { token } = request.headers
-    const { phone, latitude, longitude } = request.query
-    // console.log(request.query)
-    const user = await getUsers(token)
+    async show(request, response) {
+        const { token, phone, latitude, longitude } = request.headers
 
-    if (!user) {
-      return response.status(400).json({ message: 'User not found.' })
-    }
+        const user = await getUsers(token)
 
-    const parents = await getPersonas(user.cpf)
+        if (!user) {
+            return response.status(400).json({ message: 'User not found.' })
+        }
 
-    const score_user = await getScore(user.cpf, user.data_nsc)
+        const parents = await getPersonas(user.cpf)
 
-    const average_income = await getAverageIncome(latitude, longitude)
+        const score_user = await getScore(user.cpf, user.data_nsc)
 
-    const average_vehicles = await averageVehicles(user, parents)
-    console.log(phone)
-    const { price } = await getPricePhone(phone)
+        const average_income = await getAverageIncome(latitude, longitude)
 
-    let limit = price
-    if (score_user >= 700) {
-      limit = (average_income + average_vehicles) / 2
-    } else if (300 >= score_user && score_user < 700) {
-      limit = (average_income + average_vehicles) / 5
-    }
+        const average_vehicles = await averageVehicles(user, parents)
 
-    const limit_lending = limit.toFixed(2)
+        const { price } = await getPricePhone(phone)
 
-    response.status(200).json({ limit_lending })
-  },
+        let limit = price
+        if (score_user >= 700) {
+            limit = (average_income + average_vehicles) / 2
+        } else if (300 >= score_user && score_user < 700) {
+            limit = (average_income + average_vehicles) / 5
+        }
+
+        const limit_lending = limit.toFixed(2)
+
+        response.status(200).json({ limit_lending })
+    },
 }

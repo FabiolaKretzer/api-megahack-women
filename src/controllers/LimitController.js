@@ -23,7 +23,7 @@ module.exports = {
         const average_income = await getAverageIncome(latitude, longitude)
 
         const average_vehicles = await averageVehicles(user, parents)
-
+        // console.log(average_vehicles)
         const { price } = await getPricePhone(phone)
 
         let limit = price

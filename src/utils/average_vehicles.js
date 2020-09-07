@@ -3,9 +3,9 @@ const { getVehicles } = require('../services/clients')
 
 module.exports = {
     async averageVehicles(user, personas) {
-        const vehilhes_user = await getVehicles(user.cpf)
-
-        const vehicle_user = vehilhes_user.struct_RespostaRst.Resposta.VEICULOS.ITEM
+        const vehicles_user = await getVehicles(user.cpf)
+        console.log(vehicles_user)
+        const vehicle_user = vehicles_user.struct_RespostaRst.Resposta.VEICULOS.ITEM
 
         if (vehicle_user.length == 0) {
             return 0

@@ -1,8 +1,8 @@
 exports.seed = function (knex) {
     return knex('phone').insert([{
-        name_os: 'android',
-        mark: 'samsung',
-        model: '665AS',
+        name_os: 'Android',
+        mark: 'Samsung',
+        model: 'SM-G900P',
         price: 1000.99
     }])
 }
